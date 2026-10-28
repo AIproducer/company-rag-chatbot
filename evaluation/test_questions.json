@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What is the name of the product?",
+    "expected_answer": "Smart Water Bottle",
+    "expected_page": 1,
+    "answerable": true
+  },
+  {
+    "question": "What does the product do?",
+    "expected_answer": "Tracks water consumption throughout the day",
+    "expected_page": 1,
+    "answerable": true
+  },
+  {
+    "question": "What should I do before using the device?",
+    "expected_answer": "Charge the device before first use",
+    "expected_page": 1,
+    "answerable": true
+  },
+  {
+    "question": "What is the warranty period?",
+    "expected_answer": "One-year limited warranty",
+    "expected_page": 2,
+    "answerable": true
+  },
+  {
+    "question": "What should I do if the display does not turn on?",
+    "expected_answer": "Charge the device and try again",
+    "expected_page": 2,
+    "answerable": true
+  },
+  {
+    "question": "What is the price of the product?",
+    "expected_answer": null,
+    "expected_page": null,
+    "answerable": false
+  },
+  {
+    "question": "Does the company offer a two-year warranty?",
+    "expected_answer": null,
+    "expected_page": null,
+    "answerable": false
+  },
+  {
+    "question": "What colors are available?",
+    "expected_answer": null,
+    "expected_page": null,
+    "answerable": false
+  },
+  {
+    "question": "Where can I purchase replacement batteries?",
+    "expected_answer": null,
+    "expected_page": null,
+    "answerable": false
+  },
+  {
+    "question": "What is the battery capacity?",
+    "expected_answer": null,
+    "expected_page": null,
+    "answerable": false
+  }
+]

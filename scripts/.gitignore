@@ -1,0 +1,27 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+.venv/
+rag-chatbot/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Local vector database
+qdrant_data/
+
+# Test and development files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
