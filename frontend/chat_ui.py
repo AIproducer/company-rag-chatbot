@@ -24,12 +24,10 @@ st.markdown(
 )
 
 st.title("💬 Company AI Assistant")
-
 st.write(
     "Ask questions about our products, guides, "
     "and company documentation."
 )
-
 st.caption(
     "Answers are generated using company documents "
     "and include source references when available."
@@ -38,47 +36,35 @@ st.caption(
 
 def display_sources(sources):
     """Display unique document and page references."""
-
     if not sources:
         st.caption("No source references available.")
         return
 
-    unique_sources = []
     seen = set()
 
-    for source in sources:
-        document = source.get("document_name") or "Unknown document"
-        page = source.get("page_number")
-        key = (document, page)
-
-        if key not in seen:
-            seen.add(key)
-            unique_sources.append((document, page))
-
     with st.expander("📚 View sources"):
-        for document, page in unique_sources:
-            page_text = (
-                f"Page {page}"
-                if page is not None
-                else "Page unknown"
-            )
+        for source in sources:
+            document = source.get("document_name") or "Unknown document"
+            page = source.get("page_number")
+            key = (document, page)
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+            page_text = f"Page {page}" if page is not None else "Page unknown"
             st.markdown(f"- `{document}` — {page_text}")
 
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-
-# Display conversation history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
         if message["role"] == "assistant" and message.get("sources"):
             display_sources(message["sources"])
 
-
-# Handle new questions
 question = st.chat_input("Ask a question about our documents...")
 
 if question:
@@ -113,21 +99,20 @@ if question:
                 }
             )
 
-        except Exception:
+        except Exception as error:
             st.error(
                 "Something went wrong while processing your question. "
-                "Please try again."
+                "Please check the application logs."
             )
+            print(f"Chatbot error: {error}")
 
 
 with st.sidebar:
     st.header("About")
-
     st.write(
         "This assistant searches company documentation "
         "to answer questions using available evidence."
     )
-
     st.info(
         "The assistant should acknowledge when the "
         "available documents do not contain enough information."
@@ -138,5 +123,4 @@ with st.sidebar:
         st.rerun()
 
     st.divider()
-
     st.caption("Company RAG Chatbot · Development Version")
